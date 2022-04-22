@@ -1,0 +1,92 @@
+scr_login As screen:
+    Fill: = RGBA(30, 45, 62, 1)
+
+    Image1 As image:
+        Height: =406
+        Image: =Screenshot_1
+        Width: =640
+        ZIndex: =1
+
+    btn_forgetPassword As button:
+        Fill: =RGBA(136, 160, 209, 1)
+        Height: =70
+        OnSelect: =Navigate(scr_forgetPassword, ScreenTransition.Fade)
+        Size: =24
+        Text: ="Forgot Password"
+        Width: =278
+        X: =40
+        Y: =997
+        ZIndex: =6
+
+    btn_signUp As button:
+        Height: =70
+        OnSelect: =Navigate(scr_register, ScreenTransition.Fade)
+        Size: =24
+        Text: ="Sign Up"
+        Width: =278
+        X: =322
+        Y: =997
+        ZIndex: =7
+
+    Group7 As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =7
+
+        Label8 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =70
+            Size: =21
+            Text: ="Username"
+            Width: =560
+            X: =40
+            Y: =458
+            ZIndex: =2
+
+        Label9 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Fill: = RGBA(30, 45, 62, 1)
+            Height: =70
+            Size: =21
+            Text: ="Password"
+            Width: =560
+            X: =40
+            Y: =660
+            ZIndex: =3
+
+        userName_input As text:
+            Default: =""
+            Height: =70
+            HintText: ="Username"
+            Size: =21
+            Width: =560
+            X: =40
+            Y: =541
+            ZIndex: =4
+
+        password_input As text:
+            Default: =""
+            Height: =70
+            HintText: ="Password"
+            Mode: =TextMode.Password
+            Size: =21
+            Width: =560
+            X: =40
+            Y: =730
+            ZIndex: =5
+
+    btn_login As button:
+        Height: =70
+        OnSelect: |-
+            =If(!IsBlank(LookUp(LoginPage,Title=userName_input.Text And Password=password_input.Text).Title),Navigate(scr_home,ScreenTransition.Fade),Notify("Invalid username or password"));
+            Reset(userName_input);
+            Reset(password_input)
+        Size: =24
+        Text: ="Login"
+        Width: =560
+        X: =40
+        Y: =882
+        ZIndex: =8
+

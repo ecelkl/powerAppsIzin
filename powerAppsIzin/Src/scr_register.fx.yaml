@@ -1,0 +1,41 @@
+scr_register As screen:
+    BackgroundImage: =Screenshot_1
+    ImagePosition: =ImagePosition.Fill
+
+    TextInput1 As text:
+        Default: ="Username"
+        Height: =70
+        Size: =21
+        Width: =560
+        X: =40
+        Y: =40
+        ZIndex: =1
+
+    TextInput1_1 As text:
+        Default: ="Password"
+        Height: =70
+        Size: =21
+        Width: =560
+        X: =40
+        Y: =148
+        ZIndex: =2
+
+    TextInput1_3 As text:
+        Default: ="Email"
+        Height: =70
+        Size: =21
+        Width: =560
+        X: =40
+        Y: =256
+        ZIndex: =4
+
+    Button2 As button:
+        Height: =70
+        OnSelect: =Navigate(scr_login,ScreenTransition.Fade)
+        Size: =24
+        Text: ="Save"
+        Width: =280
+        X: =166
+        Y: =400
+        ZIndex: =5
+

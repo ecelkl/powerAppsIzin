@@ -1,0 +1,208 @@
+"scr_izinlerListesi As screen.'phoneLayout_HeaderAndGallery_ver3.0'":
+    Fill: =RGBA(30, 45, 62, 1)
+    OnVisible: |-
+        =UpdateContext({varDateSort:Blank()})
+
+    RectQuickActionBar1 As rectangle:
+        Height: =88
+        Width: =Parent.Width
+        ZIndex: =1
+
+    LblAppName1 As label:
+        Height: =88
+        Size: =27
+        Text: ="İzinlerim"
+        Width: =202
+        Wrap: =false
+        X: =68
+        ZIndex: =2
+
+    IconRefresh1 As icon.Reload:
+        AccessibleLabel: =IconRefresh1.Tooltip
+        Height: =88
+        Icon: =Icon.Reload
+        OnSelect: =Refresh(mesai)
+        PaddingBottom: =22
+        PaddingLeft: =22
+        PaddingRight: =22
+        PaddingTop: =22
+        TabIndex: =0
+        Tooltip: ="Refresh list"
+        Width: =88
+        X: =Parent.Width - IconNewItem1.Width - btn_sort.Width - IconRefresh1.Width
+        ZIndex: =3
+
+    btn_sort As icon.ArrowsUpDown:
+        AccessibleLabel: =btn_sort.Tooltip
+        Height: =88
+        Icon: =Icon.Sort
+        OnSelect: |-
+            =UpdateContext({varDateSort:!varDateSort})
+        PaddingBottom: =26
+        PaddingLeft: =26
+        PaddingRight: =26
+        PaddingTop: =26
+        TabIndex: =0
+        Tooltip: =
+        Width: =88
+        X: =Parent.Width - IconNewItem1.Width - btn_sort.Width
+        ZIndex: =4
+
+    IconNewItem1 As icon.Add:
+        AccessibleLabel: =IconNewItem1.Tooltip
+        Height: =88
+        Icon: =Icon.Add
+        OnSelect: =Navigate(scr_izin, ScreenTransition.Fade)
+        PaddingBottom: =24
+        PaddingLeft: =24
+        PaddingRight: =24
+        PaddingTop: =24
+        TabIndex: =0
+        Tooltip: ="Create new item"
+        Width: =88
+        X: =Parent.Width - IconNewItem1.Width
+        ZIndex: =5
+
+    searchText As text:
+        Align: =Left
+        Default: =""
+        Height: =68
+        HintText: ="Search items"
+        PaddingLeft: =70
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =7
+        RadiusTopLeft: =0
+        RadiusTopRight: =7
+        Size: =21
+        Width: =Parent.Width
+        Y: =RectQuickActionBar1.Height
+        ZIndex: =6
+
+    SearchIcon1 As icon.Search:
+        Height: =SearchIcon1.Width
+        Icon: =Icon.Search
+        PaddingBottom: =14
+        PaddingLeft: =14
+        PaddingRight: =14
+        PaddingTop: =14
+        Tooltip: ="Search"
+        Width: =searchText.Height
+        X: =searchText.X
+        Y: =searchText.Y
+        ZIndex: =7
+
+    Rectangle11 As rectangle:
+        Height: =2
+        Width: =Parent.Width
+        Y: =searchText.Y + searchText.Height
+        ZIndex: =8
+
+    "bg_izinler As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        BorderColor: =White
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =980
+        Items: =If(!IsBlank(varDateSort),SortByColumns(mesai,"izin_bitistarihi",If(varDateSort=true,Descending,Ascending)),mesai)
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TemplateFill: =If(Mod(Value(ThisItem.izin_ID),2)=0, RGBA(66, 125, 193, 1), RGBA(30, 45, 62, 1))
+        TemplatePadding: =0
+        TemplateSize: =193
+        Width: =Parent.Width
+        Y: =searchText.Y + searchText.Height
+        ZIndex: =9
+
+        Title1 As label:
+            Color: =White
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.izin_baslangictarihi
+            VerticalAlign: =VerticalAlign.Top
+            Width: =302
+            X: =81
+            Y: =48
+            ZIndex: =2
+
+        Subtitle1 As label:
+            Color: =White
+            Height: =32
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.izin_bitistarihi
+            VerticalAlign: =VerticalAlign.Top
+            Width: =302
+            X: =Title1.X
+            Y: =88
+            ZIndex: =3
+
+        NextArrow1 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: |-
+                =Navigate(src_izinDetay, ScreenTransition.Fade,{selectedItem:bg_izinler.Selected})
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator1 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Label5 As label:
+            Height: =42
+            OnSelect: =Select(Parent)
+            Size: =21
+            Text: =ThisItem.izin_onaydurumu
+            Width: =302
+            X: =81
+            Y: =120
+            ZIndex: =6
+
+        btn_sil As icon.Trash:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =49
+            Icon: =Icon.Trash
+            OnSelect: =Remove(mesai,bg_izinler.Selected)
+            Width: =45
+            X: =507
+            Y: =71
+            ZIndex: =7
+
+        btn_edit As icon.Edit:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =39
+            Icon: =Icon.Edit
+            OnSelect: |-
+                =Navigate(src_izinDetay, ScreenTransition.Fade,{selectedItem:bg_izinler.Selected})
+            Width: =42
+            X: =442
+            Y: =76
+            ZIndex: =8
+
+    Icon4 As icon.ChevronLeft:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =48
+        Icon: =Icon.ChevronLeft
+        OnSelect: =Navigate(scr_home, ScreenTransition.CoverRight)
+        Width: =50
+        X: =9
+        Y: =20
+        ZIndex: =10
+

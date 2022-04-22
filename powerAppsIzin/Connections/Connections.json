@@ -1,0 +1,61 @@
+{
+  "68a35ff4-4373-49f9-b747-5c922a318be2": {
+    "connectionParameters": {
+      "database": "Dataplatform",
+      "server": "sedataplatform.database.windows.net"
+    },
+    "connectionRef": {
+      "apiTier": "Premium",
+      "authenticationType": "sqlAuthentication",
+      "displayName": "SQL Server",
+      "iconUri": "https://connectoricons-prod.azureedge.net/laborbol/patches/1520/sql-mi/1.0.1520.2576/sql/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sql",
+      "parameterHints": {},
+      "parameterHintsV2": {},
+      "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_sql/connections/3e2a44f1b72a49b29f6f45ad04a5ebeb"
+    },
+    "datasets": {
+      "sedataplatform.database.windows.net,Dataplatform": {
+        "dataSources": {
+          "mesai": {
+            "tableName": "[dbo].[mesai]"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "mesai"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "68a35ff4-4373-49f9-b747-5c922a318be2"
+  },
+  "fd15d428-3231-41ad-bbdf-e937d368648e": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1568/1.0.1568.2757/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://ndbs662.sharepoint.com/sites/teamSite/": {
+        "dataSources": {
+          "LoginPage": {
+            "tableName": "76511268-da20-4b8a-b4df-2d3cd7fa883a"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "LoginPage"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "fd15d428-3231-41ad-bbdf-e937d368648e"
+  }
+}
